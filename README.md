@@ -72,7 +72,7 @@ def main():int{
     return 0
 }
 ```
-### You can also run the [mandelbrotset](https://github.com/keosariel/Programming-language-in-python-using-llvmlite/blob/main/test/mandelbrot_set.test) program in the [test folder](https://github.com/keosariel/Programming-language-in-python-using-llvmlite/tree/main/test)
+### You can also run the [mandelbrot set](https://github.com/keosariel/Programming-language-in-python-using-llvmlite/blob/main/test/mandelbrot_set.test) program in the [test folder](https://github.com/keosariel/Programming-language-in-python-using-llvmlite/tree/main/test)
 
 ## How to run it
 
