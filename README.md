@@ -72,6 +72,7 @@ def main():int{
     return 0
 }
 ```
+### You can also run the mandelbrotset program in the test folder
 
 ## How to run it
 
