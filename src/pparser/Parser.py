@@ -7,9 +7,10 @@ class PParser(Parser):
     tokens = PLexer.tokens
 
     precedence = (
-        ('nonassoc', NE, LT, LE, GT, GE,EQEQ),
+        ('nonassoc', NE, LT, LE, GT, GE, EQEQ, XOR, OR),
         ('left', PLUS, MINUS),
-        ('left', TIMES, DIVIDE)
+        ('left', TIMES, DIVIDE),
+        ('left', LSHIFT, RSHIFT),
     )
 
     def __init__(self):
@@ -105,6 +106,8 @@ class PParser(Parser):
        'expr TIMES expr',
        'expr DIVIDE expr',
        'expr MOD expr',
+       'expr LSHIFT expr',
+       'expr RSHIFT expr',
        'expr GT expr',
        'expr GE expr',
        'expr LT expr',
