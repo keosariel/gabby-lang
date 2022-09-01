@@ -53,10 +53,6 @@ class Compiler:
                 self.visit_funccall(branch)
                 
     def visit_def(self,branch):
-        '''
-            Comment
-        '''
-        
         name = branch[1]['name']
         body = branch[1]['body']
         params = branch[1]['def_params']
@@ -114,9 +110,6 @@ class Compiler:
         self.builder = previous_builder
         
     def visit_if(self,branch):
-        '''
-            Comment
-        '''
         orelse = branch[1]['orelse']
         body = branch[1]['body']
         test,Type = self.visit_value(branch[1]['test'])
@@ -144,12 +137,6 @@ class Compiler:
                   self.compile(orelse)
                   
     def visit_value(self,branch):
-        '''
-        This evaluates every value or
-        expression given and returns the value and 
-        it's type class
-        '''
-        
         if branch[0] == 'Number':
             value,Type = branch[1]['value'],self.type_map['int']
             return ir.Constant(Type,value),Type
@@ -195,10 +182,7 @@ class Compiler:
             self.builder.store(value,ptr)
         
     def strings(self,string):
-        '''
-            Strings are converted to an array 
-            of characters
-        '''
+        """Strings are converted to an array of characters"""
         
         string = string[1:-1]
         string = string.replace('\\n','\n\0')
@@ -209,9 +193,8 @@ class Compiler:
         return ir.Constant(ir.ArrayType(ir.IntType(8), n), buf),ir.ArrayType(ir.IntType(8), n)
     
     def printf(self,params,Type):
-        '''
-            C's builtin Printf function
-        '''
+        """C builtin Printf function"""
+        
         format = params[0]
         params = params[1:]
         zero = ir.Constant(ir.IntType(32),0)
@@ -372,11 +355,20 @@ class Compiler:
             elif op == '==':
                 value = self.builder.icmp_signed('==',lhs,rhs)
                 Type = ir.IntType(1)
-            elif op == 'and':
+            elif op == '&':
                 value = self.builder.and_(lhs,rhs)
                 Type = ir.IntType(1)
-            elif op == 'or':
+            elif op == '|':
                 value = self.builder.or_(lhs,rhs)
+                Type = ir.IntType(1)
+            elif op == '^':
+                value = self.builder.xor(lhs,rhs)
+                Type = ir.IntType(1)
+            elif op == '>>':
+                value = self.builder.ashr(lhs,rhs)
+                Type = ir.IntType(1)
+            elif op == '<<':
+                value = self.builder.shl(lhs,rhs)
                 Type = ir.IntType(1)
             
                 

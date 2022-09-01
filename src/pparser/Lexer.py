@@ -46,7 +46,12 @@ class PLexer(Lexer):
         CONTINUE,
         AND, 
         OR, 
-        COMMA
+        COMMA,
+        LSHIFT,
+        RSHIFT,
+        OR,
+        AND,
+        XOR
     }
 
     literals = {',',';'}
@@ -75,9 +80,14 @@ class PLexer(Lexer):
     NAME['until'] = UNTIL
     NAME['break'] = BREAK
     NAME['continue'] = CONTINUE
-    NAME['and'] = AND
-    NAME['or'] = OR
+    # NAME['and'] = AND
+    # NAME['or'] = OR
     STRING = r'(\".*?\")|(\'.*?\')'
+    LSHIFT = r'<<'
+    RSHIFT = r'>>'
+    OR = r'\|'
+    AND = r'\&'
+    XOR = r'\^'
     GE = r'>='
     GT = r'>'
     LE = r'<='
