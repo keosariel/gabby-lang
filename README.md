@@ -18,6 +18,19 @@ pip install -r requirements.txt
 
 > These are all working perfectly
 
+## Comments
+
+```
+/* this is a single line C style comment */
+
+/** 
+    this is a multi-line C++ style comment
+
+**/
+
+# this is Python
+```
+
 ## Factorial Function
 
 ```
