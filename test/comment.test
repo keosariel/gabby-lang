@@ -1,0 +1,15 @@
+def main():int{
+
+    /* this is a single line C style comment */
+
+    /**
+        this is a multi-line C++ style comment
+
+    **/
+
+    # this is Python
+
+    printf('wow comments work\n')
+
+    return 0
+}

@@ -54,6 +54,22 @@ class PLexer(Lexer):
         XOR
     }
 
+    @_(r'#.*')
+    def HASH_SINGLE_COMMENT(self, t):
+        pass
+
+    @_(r'//.*')
+    def SLASH_SINGLE_COMMENT(self, t):
+        pass
+
+    @_(r'/\*.*?\*/')
+    def SLASHSTAR_SINGLE_COMMENT(self, t):
+        pass
+
+    @_(r'\/\*+((([^\*])+)|([\*]+(?!\/)))[*]+\/')
+    def SLASHSTAR_MULTI_COMMENT(self, t):
+        pass
+
     literals = {',',';'}
 
     FLOAT = group(Pointfloat, Expfloat)
@@ -106,10 +122,6 @@ class PLexer(Lexer):
     MOD = r'%'
     COLON = r':'
     COMMA = r','
-
-    @_(r'#.*')
-    def COMMENT(self, t):
-        pass
 
     def error(self, t):
         print(f'Illegal character {t.value[0]}, in line {self.lineno}, index {self.index}')
